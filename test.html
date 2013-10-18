@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Balls</title>
+<meta charset="utf-8"/>
+<style type="text/css">
+
+#container {
+border: 1px solid black;
+background: #ddd;
+width: 294px;
+height: 500px;
+margin: 100px;
+}
+
+#ball {
+border: 1px solid black;
+background: red;
+border-radius: 100%;
+width: 15px;
+height: 15px;
+position: absolute;
+}
+
+#wrapper {
+width: 20px;
+height: 20px;
+}
+
+.brick {
+width: 40px;
+height: 10px;
+display: block;
+border: 1px solid black;
+background: green;
+float: left;
+}
+
+</style>
+
+   
+</head>
+<body>
+    
+<div id="container">
+</div>
+<script>
+
+var positionX;
+var startX;
+var endX;
+
+var positionY;
+var startY;
+var endY;
+
+function initBricks() {
+var container = document.getElementById("container");
+for (var i = 0; i < 42; i++) {
+var brick = document.createElement("div");
+brick.className = "brick";
+container.appendChild(brick);
+}
+}
+
+function getTransform(el) {
+var css = window.getComputedStyle(document.getElementById(el),null);
+var value = css.getPropertyCSSValue("-webkit-transform").cssText;
+    var results = value.match(/matrix\((\d+), (\d+), (\d+), (\d+), (\d+.\d+), (\d+)\)/);
+
+    if(!results) return [0, 0, 0];
+    if(results[1] == '3d') return results.slice(2,5);
+
+    results.push(0);
+    return results.slice(5, 8);
+}
+
+function moveY (fromY, toY, speed, counter) {
+console.log("fromY", fromY, toY);
+if (toY > 300) {
+positionX = (getTransform("wrapper")[0] * 1) + 20;
+console.log(positionX, Math.round(positionX));
+var lineNumber = Math.round( positionX/40 );
+var item = (5 * 7) + lineNumber;
+console.log(lineNumber)
+var element = document.querySelector(".brick:nth-child("+item+")");
+element.setAttribute("style","background:transparent; border-color: transparent");
+}
+positionY = fromY;
+startY = fromY;
+endY = toY;
+var styleSheets = document.styleSheets[0];
+styleSheets.insertRule("@-webkit-keyframes moveY"+counter+" { 0% { -webkit-transform: translate3d(0,"+fromY+"px,0); } 100% { -webkit-transform: translate3d(0," + toY + "px,0); } }", counter + 1);
+styleSheets.insertRule("#ball { -webkit-animation: moveY"+counter+" "+speed+"s linear 1; }", counter);
+counter += 3;
+if (counter < 300) {
+setTimeout(function(e){
+moveY(toY, fromY, speed, counter);
+}, speed * 1000);
+}
+}
+
+function moveX (fromX, toX, speed, counter) {
+positionX = fromX;
+startX = fromX;
+endX = toX;
+var styleSheets = document.styleSheets[0];
+styleSheets.insertRule("@-webkit-keyframes moveX"+counter+" { 0% { -webkit-transform: translate3d("+fromX+"px, 0,0); } 100% { -webkit-transform: translate3d(" + toX + "px, 0,0); } }", counter + 1);
+styleSheets.insertRule("#wrapper { -webkit-animation: moveX"+counter+" "+speed+"s linear 1; }", counter);
+
+counter += 3;
+if (counter < 300) {
+setTimeout(function(){
+moveX(toX, fromX, speed, counter);
+}, speed * 1000);
+}
+}
+
+function initBall() {
+var container = document.getElementById("container");
+var ball = document.createElement("div");
+ball.id = "wrapper";
+var ballInner = document.createElement("div");
+ballInner.id = "ball";
+ball.appendChild(ballInner);
+container.appendChild(ball);
+}
+
+initBricks();
+initBall();
+
+moveX(280, 0, 1.9, 0);
+moveY(485, 70, 2.9, 0);
+
+
+</script>
+
+</body>
+</html>
+

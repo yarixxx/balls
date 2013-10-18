@@ -1,0 +1,35 @@
+#container {
+border: 1px solid black;
+background: #ddd;
+width: 294px;
+height: 500px;
+margin: 100px;
+}
+
+#ball {
+border: 1px solid black;
+background: red;
+border-radius: 100%;
+width: 15px;
+height: 15px;
+position: absolute;
+}
+
+#wrapper {
+width: 20px;
+height: 20px;
+}
+
+.brick {
+  width: 40px;
+  height: 10px;
+  display: block;
+  border: 1px solid black;
+  background: green;
+  float: left;
+}
+
+.hidden {
+  background:transparent;
+  border-color: transparent;
+}

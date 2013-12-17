@@ -1,0 +1,195 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="js/cell.js"></script>
+  <script src="js/line.js"></script>
+  <script src="js/rect.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/eventDispatcher.js"></script>
+  <script src="js/gameRunner.js"></script>
+  <script src="js/numbers.js"></script>
+  <script src="js/balls.js"></script>
+
+  <style>
+    #field td {
+      text-align:center;
+      vertical-align: middle;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+
+    .fieldContainer {
+      float: right;
+      display: block;
+    }
+
+    #user {
+      display: block;
+      width: 200px;
+      font-family: sans-serif;
+      border: 2px solid gray;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div id="startScreen">
+  <h1>Games</h1>
+  <div id="gamesList">
+  </div>
+</div>
+
+<div id="gameOverScreen" style="display:none">
+  <h1>Game Over</h1>
+  <div id="goToStartScreen2">Go To Start Screen</div>
+</div>
+
+<div id="victoryScreen" style="display:none">
+  <h1>You win! Congratulations!!!</h1>
+  <div id="goToStartScreen1">Go To Start Screen</div>
+</div>
+
+<div id="playScreen" style="display:none">
+  <h1>Play</h1>
+  <button id="stop" type="button">Stop</button>
+
+<div class="fieldContainer">
+<table id="field">
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+  <div id="user">
+    <div class="name">Name: <span id="userName"></span></div>
+    <div class="score">Score: <span id="userScore"></span></div>
+  </div>
+
+
+</div>
+
+</body>
+</html>

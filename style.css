@@ -1,35 +1,60 @@
-#container {
-border: 1px solid black;
-background: #ddd;
-width: 294px;
-height: 500px;
-margin: 100px;
+h1 {
+  font-family: arial;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+  background: #eee;
+  margin: 5px;
 }
 
-#ball {
-border: 1px solid black;
-background: red;
-border-radius: 100%;
-width: 15px;
-height: 15px;
-position: absolute;
+#gamesList {
+  border: 1px solid gray;
+  border-radius: 5px;
+  float: left;
+  margin: 5px;
 }
 
-#wrapper {
-width: 20px;
-height: 20px;
+#gamesList div {
+  border: 1px solid gray;
+  border-radius: 5px;  
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 2px 2px gray;
+  font-family: sans-serif;
+  font-size: 14px;
+  background: #eee;
 }
 
-.brick {
-  width: 40px;
-  height: 10px;
-  display: block;
-  border: 1px solid black;
-  background: green;
+#goToStartScreen {
+  border: 1px solid gray;
+  border-radius: 5px;  
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 2px 2px gray;
+  font-family: sans-serif;
+  font-size: 14px;
+  background: #eee;
   float: left;
 }
 
-.hidden {
-  background:transparent;
-  border-color: transparent;
+#goToStartScreen:hover {
+  box-shadow: 1px 1px gray;
+  cursor: pointer;
+}
+
+#gamesList div:hover {
+  box-shadow: 1px 1px gray;
+  cursor: pointer;
+}
+
+#field tr {
+  height: 35px;
+}
+#field td {
+  width: 35px;
+  border: 1px solid gray;
+}
+
+#field td:hover {
+  background: #ccc;
 }

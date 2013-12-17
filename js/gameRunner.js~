@@ -1,6 +1,0 @@
-CORE = new Core();
-
-window.addEventListener("load", function() {
-  core.init();
-}, false);
-

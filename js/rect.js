@@ -43,8 +43,12 @@ function Rect(width, height, dispatcher) {
 
   function _validate(validator) {
     _finish = true;
-    hValidate.call(this, validator);
     vValidate.call(this, validator);
+    if (_finish) {
+      _dispatcher.triggerEvent("victory");
+    }
+    _finish = true;
+    hValidate.call(this, validator);
     if (_finish) {
       _dispatcher.triggerEvent("victory");
     }

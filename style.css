@@ -25,7 +25,9 @@ h1 {
   background: #eee;
 }
 
-#goToStartScreen {
+#goToStartScreen2,
+#goToStartScreen1,
+#goToStartScreen3 {
   border: 1px solid gray;
   border-radius: 5px;  
   padding: 5px;
@@ -37,7 +39,9 @@ h1 {
   float: left;
 }
 
-#goToStartScreen:hover {
+#goToStartScreen1:hover,
+#goToStartScreen2:hover,
+#goToStartScreen3:hover {
   box-shadow: 1px 1px gray;
   cursor: pointer;
 }

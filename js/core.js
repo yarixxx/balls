@@ -3,6 +3,7 @@ function Core() {
   var user;
   var field;
   var dispatcher;
+  var clickBinded = false;
 
   function createStarter(config, handler) {
     var starter = document.createElement("div");
@@ -20,12 +21,23 @@ function Core() {
     });
     var goToStartScreen1 = document.querySelector("#goToStartScreen1");
     goToStartScreen1.addEventListener("click", function() {
+	  hideVictoryScreen();
+	  hidePlayScreen();
       hideGameOverScreen();
       showStartScreen();
     }, false);
     var goToStartScreen2 = document.querySelector("#goToStartScreen2");
     goToStartScreen2.addEventListener("click", function() {
+      hideVictoryScreen();
+	  hidePlayScreen();
       hideGameOverScreen();
+      showStartScreen();
+    }, false);
+	var goToStartScreen3 = document.querySelector("#goToStartScreen3");
+    goToStartScreen3.addEventListener("click", function() {
+      hidePlayScreen();
+	  hideVictoryScreen();
+	  hideGameOverScreen();
       showStartScreen();
     }, false);
   };
@@ -57,6 +69,10 @@ function Core() {
   }
 
   function bindToField() {
+	if (clickBinded) {
+		return;
+	}
+ 
     var tds = document.querySelectorAll("#field td");
     for(var x=0; x<tds.length; x++) {
       tds[x].addEventListener("click", function(e){
@@ -65,6 +81,8 @@ function Core() {
         field.doAction(cellIndex, rowIndex);
       }, false);
     }
+	
+	clickBinded = true;
   }
 
   function gameOver() {

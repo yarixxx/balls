@@ -1,8 +1,8 @@
 var game = {
   title: "Numbers",
   initScore: 20,
-  width: 5,
-  height: 5,
+  width: 3,
+  height: 3,
   filler: function(){
     return Math.floor((Math.random()*5)+1);
   },

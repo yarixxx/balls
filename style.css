@@ -62,3 +62,16 @@ h1 {
 #field td:hover {
   background: #ccc;
 }
+
+
+#order {
+	display: block;
+	float: right;
+}
+
+#order li {
+	width: 30px;
+	height: 30px;
+	display: block;
+	float: left;
+}

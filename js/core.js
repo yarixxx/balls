@@ -63,9 +63,21 @@ function Core() {
     field.refreshView();
 
     bindToField();
+	
+	renderOrder(config.items);
 
     hideStartScreen();
     showPlayScreen();
+  }
+  
+  function renderOrder(items) {
+	var order = document.querySelector("#order");
+	items.forEach(function(item){
+		console.log(item);
+		var li = document.createElement("li");
+		li.style.background = item;
+		order.appendChild(li);
+	});
   }
 
   function bindToField() {
@@ -99,45 +111,42 @@ function Core() {
     hidePlayScreen();
     showStartScreen();
   }
+  
+  function updateElement(id, action) {
+	var element = document.querySelector(id);
+    element.style.display = action;
+  }
 
   function showStartScreen() {
-    var startScreen = document.querySelector("#startScreen");
-    startScreen.style.display = "block";
+	updateElement("#startScreen", "block");
   }
 
   function hideGameOverScreen() {
-    var gameOverScreen = document.querySelector("#gameOverScreen");
-    gameOverScreen.style.display = "none";
+  	updateElement("#gameOverScreen", "none");
   }
 
   function hideVictoryScreen() {
-    var victoryScreen = document.querySelector("#victoryScreen");
-    victoryScreen.style.display = "none";
+   	updateElement("#victoryScreen", "none");
   }
 
   function showVictoryScreen() {
-    var victoryScreen = document.querySelector("#victoryScreen");
-    victoryScreen.style.display = "block";
+	updateElement("#victoryScreen", "block");
   }
 
   function hideStartScreen() {
-    var startScreen = document.querySelector("#startScreen");
-    startScreen.style.display = "none";
+  	updateElement("#startScreen", "none");
   }
 
   function showPlayScreen() {
-    var playScreen = document.querySelector("#playScreen");
-    playScreen.style.display = "block";
+	updateElement("#playScreen", "block");
   }
 
   function showGameOverScreen() {
-    var gameOverScreen = document.querySelector("#gameOverScreen");
-    gameOverScreen.style.display = "block";
+  	updateElement("#gameOverScreen", "block");
   }
 
   function hidePlayScreen() {
-    var playScreen = document.querySelector("#playScreen");
-    playScreen.style.display = "none";
+   	updateElement("#playScreen", "none");
   }
 
   return {

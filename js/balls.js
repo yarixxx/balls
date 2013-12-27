@@ -1,7 +1,11 @@
 var game = {
   title: "Colors",
+  initScore: 20,
+  width: 3,
+  height: 3,
+  items: [ '#fffff', '#6633ff', '#0066ff', '#ff66ff', '#ff9933', '#009933' ],
   filler: function(){
-    return Math.floor((Math.random()*5)+1);
+    return game.items[Math.floor((Math.random()*5)+1)];
   },
   checkLine: function(line) {
     var occures = 0;
@@ -22,14 +26,19 @@ var game = {
   },
   doAction: function(cellIndex, rowIndex) {
     var value = this.getCell(rowIndex, cellIndex);
-    if (value < 5) {
-      value++;
-    } else {
-      value = 1;
+    if (value !== "") {
+      value = game.items[game.items.indexOf(value) + 1];
+      this.setCell(rowIndex, cellIndex, value);
+      this.triggerEvent("scoreMinus");
     }
-
-    this.setCell(rowIndex, cellIndex, value);
-    this.triggerEvent("scoreMinus");
+  },
+  refreshView: function() {
+    var tds = document.querySelectorAll("#field td");
+    for(var x=0; x<tds.length; x++) {
+      var cellIndex = tds[x].cellIndex;
+      var rowIndex = tds[x].parentElement.rowIndex;
+      tds[x].style.background = this.getCell(rowIndex, cellIndex);
+    }
   },
   isReady: function(line){
     for (var j = 0; j < line.length; j++) {
@@ -39,33 +48,6 @@ var game = {
       }
     }
     return true;
-  },
-  refreshView: function() {
-    var tds = document.querySelectorAll("#field td");
-    for(var x=0; x<tds.length; x++) {
-      var cellIndex = tds[x].cellIndex;
-      var rowIndex = tds[x].parentElement.rowIndex;
-      var value = this.getCell(rowIndex, cellIndex)
-      if (value == 0) {
-        tds[x].style.background = "#eee";
-      }
-      if (value == 1) {
-        tds[x].style.background = "red";
-      }
-      if (value == 2) {
-        tds[x].style.background = "green";
-      }
-      if (value == 3) {
-        tds[x].style.background = "blue";
-      }
-      if (value == 4) {
-        tds[x].style.background = "yellow";
-      }
-      if (value == 5) {
-        tds[x].style.background = "orange";
-      }
-
-    }
   }
 };
 

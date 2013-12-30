@@ -19,28 +19,18 @@ function Core() {
         startGame(config);
       }));
     });
-    var goToStartScreen1 = document.querySelector("#goToStartScreen1");
-    goToStartScreen1.addEventListener("click", function() {
-	  hideVictoryScreen();
-	  hidePlayScreen();
-      hideGameOverScreen();
-      showStartScreen();
-    }, false);
-    var goToStartScreen2 = document.querySelector("#goToStartScreen2");
-    goToStartScreen2.addEventListener("click", function() {
-      hideVictoryScreen();
-	  hidePlayScreen();
-      hideGameOverScreen();
-      showStartScreen();
-    }, false);
-	var goToStartScreen3 = document.querySelector("#goToStartScreen3");
-    goToStartScreen3.addEventListener("click", function() {
-      hidePlayScreen();
-	  hideVictoryScreen();
-	  hideGameOverScreen();
-      showStartScreen();
-    }, false);
-  };
+
+    var goToStartScreenBtns = document.getElementsByClassName("go-to-start-screen");
+    for (var i = 0; i < goToStartScreenBtns.length; i++) {
+        goToStartScreenBtns[i].addEventListener("click", function() {
+            field.cleanField();
+            hideVictoryScreen();
+            hidePlayScreen();
+            hideGameOverScreen();
+            showStartScreen();
+        }, false);
+    }
+  }
 
   function startGame(config) {
     if (!user) {
@@ -59,6 +49,7 @@ function Core() {
     field.setDoAction(config.doAction);
     field.setIsReady(config.isReady);
     field.setRefreshView(config.refreshView);
+    field.setCleanCell(config.cleanCell);
     field.init(config.filler);
     field.refreshView();
 
@@ -72,6 +63,7 @@ function Core() {
   
   function renderOrder(items) {
 	var order = document.querySelector("#order");
+    order.innerText = "";
 	items.forEach(function(item){
 		console.log(item);
 		var li = document.createElement("li");
@@ -98,16 +90,19 @@ function Core() {
   }
 
   function gameOver() {
+    field.cleanField();
     hidePlayScreen();
     showGameOverScreen();
   }
 
   function victory() {
+    field.cleanField();
     hidePlayScreen();
     showVictoryScreen();
   }
 
   function stopGame() {
+    field.cleanField();
     hidePlayScreen();
     showStartScreen();
   }

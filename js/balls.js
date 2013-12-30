@@ -40,6 +40,9 @@ var game = {
       tds[x].style.background = this.getCell(rowIndex, cellIndex);
     }
   },
+  cleanCell: function() {
+    return "";
+  },
   isReady: function(line){
     for (var j = 0; j < line.length; j++) {
       var currentValue = line[j].getValue();

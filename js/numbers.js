@@ -3,6 +3,7 @@ var game = {
   initScore: 20,
   width: 3,
   height: 3,
+  items: [ '0', '1', '2', '3', '4', '5' ],
   filler: function(){
     return Math.floor((Math.random()*5)+1);
   },
@@ -38,6 +39,9 @@ var game = {
       var rowIndex = tds[x].parentElement.rowIndex;
       tds[x].innerText = this.getCell(rowIndex, cellIndex);
     }
+  },
+  cleanCell: function() {
+    return "";
   },
   isReady: function(line){
     for (var j = 0; j < line.length; j++) {

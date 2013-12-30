@@ -7,6 +7,7 @@ function Rect(width, height, dispatcher) {
   var _checkLine;
   var _doAction;
   var _refreshView;
+  var _cleanCell;
   var _isReady;
   var _finish = true;
 
@@ -60,6 +61,19 @@ function Rect(width, height, dispatcher) {
     }
   }
 
+  function _doCleanField() {
+      for (var i = 0; i < _width; i++) {
+          _updateLine(i, _cleanCell);
+      }
+  }
+
+  function _updateLine(i, filler) {
+    for (var j = 0; j < _height; j++) {
+        var cell = hlines[i][j]
+        cell.setValue(filler());
+    }
+  }
+
   function _fillLine(i, filler) {
     for (var j = 0; j < _height; j++) {
       var cell = new Cell();
@@ -84,6 +98,9 @@ function Rect(width, height, dispatcher) {
     },
     setIsReady: function(isReady) {
       _isReady = isReady;
+    },
+    setCleanCell: function(cleanCell) {
+        _cleanCell = cleanCell;
     },
     setCheckLine: function(checkLine) {
       _checkLine = checkLine;
@@ -113,6 +130,10 @@ function Rect(width, height, dispatcher) {
     },
     cleanSegment: function(line, a, b) {
       _cleanSegment(line, a, b);
+    },
+    cleanField: function() {
+      _doCleanField();
+      _refreshView.call(this);
     },
     triggerEvent: function(event) {
       _dispatcher.triggerEvent(event);

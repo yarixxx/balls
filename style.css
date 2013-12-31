@@ -53,16 +53,51 @@ h1 {
 #field td {
   width: 35px;
   border: 1px solid gray;
+  box-shadow: -3px 2px 5px #fff inset;
 }
 
 #field td:hover {
-  background: #ccc;
+  box-shadow: 3px -2px 5px #fff inset;
+}
+
+.empty,
+.one,
+.two,
+.three,
+.four,
+.five {
+  border-radius: 25px;
+  border: 0px solid white;
+  box-shadow: -3px 2px 5px #fff inset;
+}
+
+.empty {
+  background: #fff;
+}
+
+.one {
+  background: #6633ff;
+}
+
+.two {
+  background: #0066ff;
+} 
+.three{
+  background: #ff66ff;
+}
+
+.four{
+  background: #ff9933;
+}
+.five {
+  background: #009933;
 }
 
 
 #order {
 	display: block;
 	float: right;
+	margin: 20px;
 }
 
 #order li {

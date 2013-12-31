@@ -67,7 +67,7 @@ function Core() {
 	items.forEach(function(item){
 		console.log(item);
 		var li = document.createElement("li");
-		li.style.background = item;
+		li.className = item;
 		order.appendChild(li);
 	});
   }

@@ -1,9 +1,9 @@
 var game = {
   title: "Colors",
-  initScore: 20,
+  initScore: 10,
   width: 3,
   height: 3,
-  items: [ '#fffff', '#6633ff', '#0066ff', '#ff66ff', '#ff9933', '#009933' ],
+  items: [ 'empty', 'one', 'two', 'three', 'four', 'five' ],
   filler: function(){
     return game.items[Math.floor((Math.random()*5)+1)];
   },
@@ -37,7 +37,8 @@ var game = {
     for(var x=0; x<tds.length; x++) {
       var cellIndex = tds[x].cellIndex;
       var rowIndex = tds[x].parentElement.rowIndex;
-      tds[x].style.background = this.getCell(rowIndex, cellIndex);
+	  
+	  tds[x].className = this.getCell(rowIndex, cellIndex);
     }
   },
   cleanCell: function() {

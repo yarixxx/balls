@@ -1,6 +1,6 @@
 var game = {
   title: "Numbers",
-  initScore: 20,
+  initScore: 10,
   width: 3,
   height: 3,
   items: [ '0', '1', '2', '3', '4', '5' ],
